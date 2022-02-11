@@ -64,6 +64,20 @@ function level5 (){
     'Размер популяции должен быть равен 0 к 5 поколению. Надо поставить 1 точку.';
   drawField();
 }
+function level6(){
+  mas[14][14] = 1;
+  mas[14][15] = 1;
+  mas[4][25] = 1;
+  mas[24][25] = 1;
+  mas[15][14] = 1;
+  mas[15][15] = 1;
+  level = 5;
+  population = 10;
+  document.getElementById('popul').innerHTML = population;
+  document.getElementById('info').innerHTML =
+    'Размер популяции должен быть равен 0 к 5 поколению. Надо поставить 1 точку.';
+  drawField();
+}
 
 canvas.onclick = function(event) {
   var x = event.offsetX;
@@ -164,6 +178,9 @@ function startLife() {
   if ((level == 5)) {
     check5level();
   }
+  if ((level == 6)) {
+    check6level();
+  }
   document.getElementById('count').innerHTML = count;
   document.getElementById('popul').innerHTML = population;
   if (stop == 0) timer = setTimeout(startLife, 700);
@@ -243,6 +260,16 @@ function check5level() {
     document.getElementById('info').innerHTML = 'Didn’t work, Try again';
   }
 }
+function check6level() {
+
+  if (count == 10 && population == 10) {
+    stopLife();
+    document.getElementById('info').innerHTML = 'You score!';
+  } else if (count > 10 && population != 10) {
+    stopLife();
+    document.getElementById('info').innerHTML = 'Didn’t work, Try again';
+  }
+}
 
 
  document.getElementById('start').onclick = startLife;
@@ -251,5 +278,6 @@ function check5level() {
  document.getElementById('level3').onclick = level3;
  document.getElementById('level4').onclick = level4;
  document.getElementById('level5').onclick = level5;
+ document.getElementById('level6').onclick = level6;
  document.getElementById('stop').onclick = stopLife;
  document.getElementById('clearF').onclick = clearField;
